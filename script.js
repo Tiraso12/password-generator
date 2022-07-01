@@ -1,6 +1,4 @@
 // Assignment code here
-var charactersLength = 8;
-
 var numberArray = ["0","1","2","3","4","5","6","7","8","9"];
 var upperCaseArray = ["Q","W","E","R","T","Y","U","I","O","P","A","S","D","F","G","H","J","K","L","Z","X","C","V","B","N","M"];
 var lowerCaseArray = ["q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m"];
@@ -60,9 +58,12 @@ function passwordParameters(){
 
 //random function to process array
 function randomGenerator (){
-
-
-}
+  var newPassword = "";
+  for (var i = 0; i < charactersLength; i++) {
+      var randomChar = Math.floor(Math.random() * userChoice.charactersLength);
+      newPassword = newPassword + userChoice[randomChar];
+  }
+};
 
 // create generatePassword function.
 function generatePassword(){
@@ -89,14 +90,6 @@ function generatePassword(){
     userChoice = userChoice.concat(symbolArray);
   }
 
-  
-  console.log(userChoice);
-
-var newPassword = "";
-    for (var i = 0; i < characterCount; i++) {
-        var randomChar = Math.floor(Math.random() * userChoice.length);
-        newPassword = newPassword + userChoice[randomChar];
-    }
   //validate the input.
   // generate password
   //display the password.
@@ -105,7 +98,7 @@ var newPassword = "";
 
 
 
-  return "generated password value";
+  return newPassword;
 }
 
 // Write password to the #password input
