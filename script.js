@@ -9,16 +9,80 @@ var symbolArray = ["!","@","#","$","%","^","&","*","(","?","/",];
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-var charactersLenght = lenght
+var charactersLength = length;
+
+function passwordParameters(){
+
+  // password prompt lenght
+  var length =  parseInt(prompt( "how many characters would you like the password to containt (8-128)"));
+    if (Number.isNaN(length)) {
+      alert("Must enter a number");
+      return null;
+    }
+
+    if (length < 8 || length >128) {
+      alert("Number must containt between 8-128");
+      return null;
+    }
+  console.log(length);
+
+  // Confirm on each of the arrays
+
+  var isNumber = confirm ("press ok if you want it to containt numbers");
+
+  // Confirm Upper case
+  var isUpperCase = confirm ("press ok if you want it to containt uppercase");
+  // Confirm Lower case
+  var isLowerCase = confirm ("press ok if you want it to containt lowercase");
+  // Confirm Symbols case
+  var isSymbol = confirm ("press ok if you want it to containt symbols");
+
+  if (isNumber === false && isUpperCase === false && isLowerCase=== false && isSymbol===false) {
+    alert("Password needs to include 1 Character type");
+
+    return null;
+    
+  }
+  
+  var userSelection = {
+    length:length,
+    isUpperCase:isUpperCase,
+    isLowerCase:isLowerCase,
+    isSymbol:isSymbol,
+    isNumber:isNumber,
+  };
+
+  return userSelection;
+
+
+
+}
+
+//random function to process array
+function randomGenerator (){
+   var newPassword = "";
+for (var i = 0; i < characterCount; i++) {
+    var randomChar = Math.floor(Math.random() * userChoice.length);
+    newPassword = newPassword + userChoice[randomChar];
+}
+
+}
 
 // create generatePassword function.
 function generatePassword(){
-  console.log("confirm test");
+  
+  var userInput = passwordParameters();
+     //3 EMPTY ARRAYS
+
+    userChoice = []
+
+     //independent random fuction
+  if (userInput.isUpperCase) {
+    var randomGenerator =
+  }
   
   
-  //prompt for password 
-  // 8 < 128 length
-  // lower,upper,number,special character
+
 
   //validate the input.
   // generate password
