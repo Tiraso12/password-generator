@@ -35,7 +35,7 @@ function passwordParameters(){
   // Confirm Lower case
   var isLowerCase = confirm ("press ok if you want it to containt lowercase");
   // Confirm Symbols case
-  var isSymbol = confirm ("press ok if you want it to containt symbols");
+  var isSymbol = confirm ("press ok if you want it to containt lowercase");
 
   if (isNumber === false && isUpperCase === false && isLowerCase=== false && isSymbol===false) {
     alert("Password needs to include 1 Character type");
@@ -60,11 +60,7 @@ function passwordParameters(){
 
 //random function to process array
 function randomGenerator (){
-   var newPassword = "";
-for (var i = 0; i < characterCount; i++) {
-    var randomChar = Math.floor(Math.random() * userChoice.length);
-    newPassword = newPassword + userChoice[randomChar];
-}
+
 
 }
 
@@ -74,16 +70,33 @@ function generatePassword(){
   var userInput = passwordParameters();
      //3 EMPTY ARRAYS
 
-    userChoice = []
+     userChoice = [];
 
      //independent random fuction
   if (userInput.isUpperCase) {
-    var randomGenerator =
+    userChoice = userChoice.concat(upperCaseArray);
+  };
+
+  if (userInput.isLowerCase) {
+    userChoice = userChoice.concat(lowerCaseArray);
+  };
+  
+  if (userInput.isNumber) {
+    userChoice = userChoice.concat(numberArray);
   }
-  
-  
 
+  if (userInput.isSymbol) {
+    userChoice = userChoice.concat(symbolArray);
+  }
 
+  
+  console.log(userChoice);
+
+var newPassword = "";
+    for (var i = 0; i < characterCount; i++) {
+        var randomChar = Math.floor(Math.random() * userChoice.length);
+        newPassword = newPassword + userChoice[randomChar];
+    }
   //validate the input.
   // generate password
   //display the password.
