@@ -22,7 +22,6 @@ function passwordParameters(){
       alert("Number must containt between 8-128");
       return null;
     }
-  console.log(length);
 
   // Confirm on each of the arrays
 
@@ -47,40 +46,31 @@ function passwordParameters(){
     isUpperCase:isUpperCase,
     isLowerCase:isLowerCase,
     isSymbol:isSymbol,
-    isNumber:isNumber,
+    isNumber:isNumber
   };
 
   return userSelection;
-
-
-
-}
+};
 
 //random function to process array
-function randomGenerator (){
-  var newPassword = "";
-  for (var i = 0; i < charactersLength; i++) {
-      var randomChar = Math.floor(Math.random() * userChoice.charactersLength);
-      newPassword = newPassword + userChoice[randomChar];
-  }
-};
+
 
 // create generatePassword function.
 function generatePassword(){
   
   var userInput = passwordParameters();
-     //3 EMPTY ARRAYS
+     // EMPTY ARRAY
 
-     userChoice = [];
+    var userChoice = [];
 
      //independent random fuction
   if (userInput.isUpperCase) {
     userChoice = userChoice.concat(upperCaseArray);
-  };
+  }
 
   if (userInput.isLowerCase) {
     userChoice = userChoice.concat(lowerCaseArray);
-  };
+  }
   
   if (userInput.isNumber) {
     userChoice = userChoice.concat(numberArray);
@@ -90,16 +80,16 @@ function generatePassword(){
     userChoice = userChoice.concat(symbolArray);
   }
 
-  //validate the input.
-  // generate password
-  //display the password.
 
-
-
-
-
+  var newPassword = "";
+  for (var i = 0; i < charactersLength; i++) {
+      var randomChar = Math.floor(Math.random() * userChoice.length);
+      newPassword = newPassword + userChoice[randomChar];
+  }
+ console.log(newPassword);
+  // display generated password!
   return newPassword;
-}
+};
 
 // Write password to the #password input
 function writePassword() {
