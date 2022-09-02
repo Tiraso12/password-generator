@@ -4,18 +4,18 @@ var upperCaseArray = ["Q","W","E","R","T","Y","U","I","O","P","A","S","D","F","G
 var lowerCaseArray = ["q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m"];
 var symbolArray = ["!","@","#","$","%","^","&","*","(","?","/",];
 
+var userChoice = [];
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-var charactersLength = length;
 
 function passwordParameters(){
-
+  
   // password prompt lenght
   var length =  parseInt(prompt( "how many characters would you like the password to containt (8-128)"));
     if (Number.isNaN(length)) {
       alert("Must enter a number");
-      return null;
+      return;
     }
 
     if (length < 8 || length >128) {
@@ -32,7 +32,7 @@ function passwordParameters(){
   // Confirm Lower case
   var isLowerCase = confirm ("press ok if you want it to containt lowercase");
   // Confirm Symbols case
-  var isSymbol = confirm ("press ok if you want it to containt lowercase");
+  var isSymbol = confirm ("press ok if you want it to containt symbols");
 
   if (isNumber === false && isUpperCase === false && isLowerCase=== false && isSymbol===false) {
     alert("Password needs to include 1 Character type");
@@ -51,23 +51,19 @@ function passwordParameters(){
 
   return userSelection;
 };
-
-//random function to process array
-
-
 // create generatePassword function.
 function generatePassword(){
   
+  
+  
   var userInput = passwordParameters();
-     // EMPTY ARRAY
-
-    var userChoice = [];
-
-     //independent random fuction
+  // EMPTY ARRAY
+  
+  //independent random fuction
   if (userInput.isUpperCase) {
     userChoice = userChoice.concat(upperCaseArray);
   }
-
+  
   if (userInput.isLowerCase) {
     userChoice = userChoice.concat(lowerCaseArray);
   }
@@ -75,20 +71,19 @@ function generatePassword(){
   if (userInput.isNumber) {
     userChoice = userChoice.concat(numberArray);
   }
-
+  
   if (userInput.isSymbol) {
     userChoice = userChoice.concat(symbolArray);
   }
 
-
   var newPassword = "";
-  for (var i = 0; i < charactersLength; i++) {
-      var randomChar = Math.floor(Math.random() * userChoice.length);
+  for (var i = 0; i < userInput.length; i++) {
+      var randomChar = Math.floor(Math.random() * userInput.length);
       newPassword = newPassword + userChoice[randomChar];
-  }
- console.log(newPassword);
-  // display generated password!
-  return newPassword;
+    }
+    // display generated password!
+    return newPassword;
+
 };
 
 // Write password to the #password input
