@@ -78,7 +78,7 @@ function generatePassword(){
 
   var newPassword = "";
   for (var i = 0; i < userInput.length; i++) {
-      var randomChar = Math.floor(Math.random() * userInput.length);
+      var randomChar = Math.floor(Math.random() * userChoice.length);
       newPassword = newPassword + userChoice[randomChar];
     }
     // display generated password!
